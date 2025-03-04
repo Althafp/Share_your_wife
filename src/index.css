@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-syw-yellow: #fede00;
+  --color-syw-yellow-200: #fff9cc;
+  --color-syw-yellow-400: #fff399;
+  --color-syw-yellow-600: #ffed66;
+}
