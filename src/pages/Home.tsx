@@ -1,5 +1,5 @@
 import React from 'react';
-import { FAQSection, HeroSection, TrustedPartners } from '../components';
+import { FAQSection, HeroSection, TrustedPartners, UpcomingEvents } from '../components';
 
 const Home: React.FC = () => {
     return (
@@ -7,6 +7,7 @@ const Home: React.FC = () => {
             <HeroSection />
             <TrustedPartners />
             <FAQSection />
+            <UpcomingEvents />
         </div>
     );
 };

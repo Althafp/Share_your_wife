@@ -8,5 +8,6 @@ export { Navbar, Footer };
 import HeroSection from "./HeroSection";
 import TrustedPartners from "./TrustedPartners";
 import FAQSection from "./FAQSection";
+import UpcomingEvents from "./UpcomingEvents";
 
-export { HeroSection, TrustedPartners, FAQSection };
+export { HeroSection, TrustedPartners, FAQSection, UpcomingEvents };

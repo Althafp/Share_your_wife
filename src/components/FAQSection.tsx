@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
@@ -99,6 +99,63 @@ const FAQSection = () => {
           </motion.button>
         </div>
       </div>
+
+      {/* New Question Input Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mt-12 max-w-3xl mx-auto"
+      >
+        <div className="relative bg-white rounded-2xl shadow-xl border-2 border-syw-yellow p-2">
+          <textarea
+            placeholder="Type your what if question..."
+            className="w-full px-6 py-4 text-lg resize-none outline-none min-h-[100px] rounded-xl"
+          />
+          <div className="flex items-center justify-between p-4 border-t border-gray-100">
+            <p className="text-sm text-gray-500">
+              Your question might be featured in our next episode!
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-syw-yellow px-8 py-3 rounded-xl font-semibold 
+              text-dark-gray hover:bg-syw-yellow-600 transition-all
+              shadow-lg hover:shadow-xl flex items-center space-x-2"
+            >
+              <span>Post Question</span>
+              <svg 
+                className="w-5 h-5 transform rotate-45" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
+                />
+              </svg>
+            </motion.button>
+          </div>
+
+          {/* Decorative Elements */}
+          <div className="absolute -top-3 -left-3 w-6 h-6 bg-syw-yellow rounded-full" />
+          <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-syw-yellow rounded-full" />
+          <div className="absolute -top-3 -right-3 w-6 h-6 border-4 border-syw-yellow rounded-full bg-white" />
+          <div className="absolute -bottom-3 -left-3 w-6 h-6 border-4 border-syw-yellow rounded-full bg-white" />
+        </div>
+
+        {/* Character Count or Helper Text */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center mt-4 text-gray-500 text-sm"
+        >
+          Share your thought-provoking questions Lorem ipsum dolor sit amet.
+        </motion.p>
+      </motion.div>
     </div>
   );
 };
