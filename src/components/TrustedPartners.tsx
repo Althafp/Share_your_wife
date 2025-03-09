@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const TrustedPartners = () => {
   const partners = [
-    { id: 1, name: "Microsoft", placeholder: true },
-    { id: 2, name: "Airbnb", placeholder: true },
-    { id: 3, name: "Amazon", placeholder: true },
-    { id: 4, name: "Blume", placeholder: true },
-    { id: 5, name: "YouTube", placeholder: true },
-    { id: 6, name: "Adobe", placeholder: true }
+    { id: 1, name: "", placeholder: true },
+    { id: 2, name: "", placeholder: true },
+    { id: 3, name: "", placeholder: true },
+    { id: 4, name: "", placeholder: true },
+    { id: 5, name: "", placeholder: true },
+    { id: 6, name: "", placeholder: true }
   ];
 
   return (
