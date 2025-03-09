@@ -57,6 +57,9 @@ const events = [
 
 const UpcomingEvents = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    
+    // Set this to true to apply blur to the entire section
+    const enableSectionBlur = true;
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % events.length);
@@ -73,7 +76,7 @@ const UpcomingEvents = () => {
     };
 
     return (
-        <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+        <section className={`py-24 bg-gradient-to-b from-white to-gray-50 ${enableSectionBlur ? 'blur-sm' : ''}`}>
             <div className="container mx-auto px-4">
                 {/* Section Header */}
                 <motion.div

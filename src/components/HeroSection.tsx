@@ -67,10 +67,12 @@ const HeroSection = () => {
         className="max-w-4xl px-4 z-10"
       >
         <h1 className="text-6xl font-bold text-dark-gray mb-6">
-          #Tagline <span className="text-syw-yellow">Highlight</span>
+          SHARE YOUR <br />
+          <span className="text-syw-yellow">What If Experiences</span>
         </h1>
+
         <p className="text-2xl text-gray-700 mb-12 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet consectetur.
+        Where ‘What If’ Becomes ‘What’s Next’.
         </p>
       </motion.div>
 
