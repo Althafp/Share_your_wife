@@ -1,192 +1,227 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Play, 
-  Headphones, 
-  Speaker 
-} from 'lucide-react';
+import { motion } from "framer-motion";
+import {  FaHeadphones, FaUsers} from "react-icons/fa";
+import { SiSpotify } from "react-icons/si";
+import { logo,ourLogo } from '../assets';
 
-const podcastEpisodes = [
-  {
-    id: 1,
-    title: "Blockchain Revolution",
-    description: "Exploring the transformative power of decentralized technologies",
-    duration: "54:32",
-    imageUrl: "https://placehold.co/800x600",
-    tags: ["Web3", "Blockchain", "Innovation"],
-    guests: ["Alex Thompson", "Sarah Chen"]
-  },
-  {
-    id: 2,
-    title: "AI & Ethical Frontiers",
-    description: "Navigating the complex landscape of artificial intelligence ethics",
-    duration: "1:12:45",
-    imageUrl: "https://placehold.co/800x600",
-    tags: ["AI", "Ethics", "Technology"],
-    guests: ["Dr. Elena Rodriguez", "Marcus Wong"]
-  },
-  {
-    id: 3,
-    title: "Crypto Horizons",
-    description: "Deep dive into the future of cryptocurrency and digital economies",
-    duration: "47:18",
-    imageUrl: "https://placehold.co/800x600",
-    tags: ["Crypto", "Economics", "Digital Finance"],
-    guests: ["Jamie Roberts", "Kim Park"]
-  }
-];
-
-const HeroSection = () => {
-  const [currentEpisode, setCurrentEpisode] = useState(0);
-
-  const nextEpisode = () => {
-    setCurrentEpisode((prev) => (prev + 1) % podcastEpisodes.length);
+const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3 },
+    },
   };
 
-  const prevEpisode = () => {
-    setCurrentEpisode((prev) => (prev - 1 + podcastEpisodes.length) % podcastEpisodes.length);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
-  const episode = podcastEpisodes[currentEpisode];
+  const handleLearnMoreClick = () => {
+    const subHeadingElement = document.getElementById("SubHeading");
+    if (subHeadingElement) {
+      const offset = 32;
+      const elementPosition = subHeadingElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <div className="min-h-screen pb-16 pt-8 flex flex-col justify-center items-center text-center bg-white relative overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-syw-yellow-200 to-syw-yellow-400 
-        [background-size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_100%)]"></div>
-      </div>
+    <div className="min-h-screen w-full flex items-center justify-center overflow-hidden relative bg-gradient-to-bl from-black via-indigo-900 to-indigo-800">
+      <div className="h-full w-full flex flex-col md:flex-row items-center justify-center px-8 sm:px-6 md:px-8 lg:px-16 pt-16 pb-8 md:pt-24 md:pb-16 gap-8 md:gap-12">
+        {/* Left Section */}
+        <motion.div
+          className="w-full md:w-2/3 lg:w-1/2 flex flex-col justify-center max-md:items-center max-md:text-center space-y-4 md:space-y-6 md:pr-12 md:pl-8 relative z-0"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        ><span>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold md:font-black text-pink-600 leading-tight"
+          >Powered By 99<sup className="text-white">th</sup>Floor</h1>
+          <div className="hidden max-md:flex absolute inset-0 opacity-10 z-[-1]">
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 50 Q25 30 50 50 T100 50"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                className="text-yellow-400"
+              />
+              <path
+                d="M0 40 Q25 20 50 40 T100 40"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                fill="none"
+                className="text-yellow-400"
+              />
+              <path
+                d="M0 60 Q25 40 50 60 T100 60"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                fill="none"
+                className="text-yellow-400"
+              />
+            </svg>
+          </div>
+          </span>
 
-      {/* Tagline & Subline */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl px-4 z-10"
+          <motion.h1
+            variants={itemVariants}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold md:font-black text-white leading-tight"
+          >
+            Where Stories Meet
+            <span className="text-yellow-400"> Sound</span>
+            <span>
+<div className="absolute inset-0 flex items-center justify-center">
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{
+                    scaleY: [1, 1.5, 1],
+                    opacity: [0.3, 0.7, 0.3],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                    ease: "easeInOut",
+                  }}
+                  className="w-1 bg-yellow-400 mx-1 rounded-full"
+                  style={{
+                    height: `${20 + i * 10}px`,
+                  }}
+                />
+              ))}
+            </div>
+            </span>
+          </motion.h1>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-base sm:text-lg text-gray-300 py-2"
+          >
+            Dive into captivating conversations, inspiring stories, and thought-provoking discussions. 
+            Join our growing community of listeners who crave authentic content.
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-2 sm:gap-4"
+          >
+            
+            <button
+              className="px-4 sm:px-8 py-2.5 sm:py-3 border-2 border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all text-sm sm:text-base"
+              onClick={handleLearnMoreClick}
+            >
+              Explore Episodes
+            </button>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-wrap items-center max-md:justify-center gap-2 md:gap-4 sm:gap-8 pt-4"
+          >
+            {[
+              { icon: FaUsers, text: "10K+ Listeners" },
+              { icon: FaHeadphones, text: "50+ Episodes" },
+              { icon: SiSpotify, text: "Weekly Releases" },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="flex items-center space-x-2"
+              >
+                <item.icon className="text-yellow-400 w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-xs sm:text-sm font-medium text-gray-300">
+                  {item.text}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Sound Wave Pattern Overlay */}
+          
+        </motion.div>
+
+        {/* Right Section */}
+        <motion.div
+          className="hidden md:flex w-full md:w-1/3 lg:w-1/2 h-[300px] sm:h-[400px] md:h-full items-center justify-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="relative w-full max-w-lg aspect-square">
+            {/* Animated Floating Elements */}
+            <motion.div
+              animate={{
+                y: [0, -20, 0],
+                rotateZ: [0, 5, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute top-0 left-0 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-30"
+            />
+            <motion.div
+              animate={{
+                y: [-20, 20, -20],
+                x: [10, -10, 10],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-xl opacity-40"
+            />
+
+             <div className="relative flex items-center justify-center space-x-8 mt-38">
+      {/* Logo 1 */}
+      <motion.div
+        animate={{ rotateY: [0, 360] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+        className="w-32 h-48"
       >
-        <h1 className="text-6xl font-bold text-dark-gray mb-6">
-          SHARE YOUR <br />
-          <span className="text-syw-yellow">What If Experiences</span>
-        </h1>
-
-        <p className="text-2xl text-gray-700 mb-12 max-w-2xl mx-auto">
-        Where ‘What If’ Becomes ‘What’s Next’.
-        </p>
+        <img
+          src={logo}
+          alt="Logo 1"
+          className="w-full h-full opacity-80 object-contain"
+        />
       </motion.div>
 
-      {/* Episode Carousel */}
-      <div className="w-full max-w-5xl px-4 z-10">
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <motion.button
-            onClick={prevEpisode}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute -left-16 top-1/2 -translate-y-1/2 z-20 bg-syw-yellow/80 hover:bg-syw-yellow 
-            rounded-full p-2 shadow-lg"
-          >
-            <ChevronLeft size={32} />
-          </motion.button>
-          <motion.button
-            onClick={nextEpisode}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute -right-16 top-1/2 -translate-y-1/2 z-20 bg-syw-yellow/80 hover:bg-syw-yellow 
-            rounded-full p-2 shadow-lg"
-          >
-            <ChevronRight size={32} />
-          </motion.button>
+      {/* Collaboration Symbol (X or SVG) */}
+      <div className="text-white text-4xl font-bold opacity-70">×</div>
 
-          {/* Episode Card */}
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={episode.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-2xl shadow-2xl overflow-hidden grid md:grid-cols-2 
-              border border-gray-100"
-            >
-              {/* Episode Image */}
-              <div className="aspect-video md:aspect-square">
-                <img 
-                  src={episode.imageUrl} 
-                  alt={episode.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Episode Details */}
-              <div className="p-8 flex flex-col justify-center items-center text-center">
-                <div className="flex items-center mb-4 space-x-3 ">
-                  <Headphones className="text-syw-yellow" size={24} />
-                  <span className="text-sm text-gray-600">{episode.duration}</span>
-                </div>
-
-                <h2 className="text-3xl font-bold text-dark-gray mb-4">
-                  {episode.title}
-                </h2>
-
-                <p className="text-gray-700 mb-6">
-                  {episode.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex space-x-2 mb-6">
-                  {episode.tags.map(tag => (
-                    <span 
-                      key={tag}
-                      className="bg-syw-yellow-400 text-yellow-800 px-3 py-1 rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Guests */}
-                <div className="mb-6">
-                  <h4 className="text-sm text-gray-600 mb-2">Featured Guests</h4>
-                  <div className="flex space-x-2">
-                    {episode.guests.map(guest => (
-                      <span 
-                        key={guest}
-                        className="bg-gray-100 text-dark-gray px-3 py-1 rounded-full text-sm"
-                      >
-                        {guest}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-syw-yellow text-dark-gray px-6 py-3 rounded-full 
-                    font-semibold flex items-center space-x-2 hover:bg-syw-yellow-600 transition-colors"
-                  >
-                    <Play className="mr-2" /> Listen Now
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-2 border-syw-yellow text-dark-gray px-6 py-3 
-                    rounded-full font-semibold flex items-center space-x-2 hover:bg-syw-yellow-600"
-                  >
-                    <Speaker className="mr-2" /> Preview
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      {/* Logo 2 */}
+      <motion.div
+        animate={{ rotateY: [0, 360] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+        className="w-32 h-52"
+      >
+        <img
+          src={ourLogo}
+          alt="Logo 2"
+          className="w-full h-full opacity-80 object-contain"
+        />
+      </motion.div>
+    </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
-export default HeroSection;
+export default Hero;
