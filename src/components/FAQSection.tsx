@@ -40,7 +40,6 @@ const FAQSection = () => {
   const [submitMessage, setSubmitMessage] = useState('');
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [ setSelectedFAQId] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   // Fetch questions from Firebase
@@ -83,11 +82,9 @@ const FAQSection = () => {
   const toggleQuestion = (index: number, faqId: string) => {
     if (activeQuestion === index) {
       setActiveQuestion(null);
-      setSelectedFAQId(null);
       setComments([]);
     } else {
       setActiveQuestion(index);
-      setSelectedFAQId(faqId);
       fetchComments(faqId);
     }
   };
