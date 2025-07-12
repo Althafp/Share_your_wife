@@ -40,7 +40,7 @@ const FAQSection = () => {
   const [submitMessage, setSubmitMessage] = useState('');
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [selectedFAQId, setSelectedFAQId] = useState<string | null>(null);
+  const [ setSelectedFAQId] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   // Fetch questions from Firebase
